@@ -15,8 +15,7 @@
   "rules":{
     "no-console":0,
     "indent": [
-      2,
-      2,
+      0,0,
       {
         "SwitchCase": 1,
         "ObjectExpression": 1
@@ -42,10 +41,10 @@
     "jsx-a11y/no-static-element-interactions": 0,
     "keyword-spacing": [2, { "before": true }],
     "eqeqeq": [2, "always"],
-    "space-infix-ops": [2, {"int32Hint": false}],
-    "spaced-comment": 2,
-    "comma-spacing": [2, { "before": false, "after": true }],
-    "block-spacing": [2, "always"],
+    "space-infix-ops": [0, {"int32Hint": false}],
+    "spaced-comment": 0,
+    "comma-spacing": [0, { "before": false, "after": true }],
+    "block-spacing": [0, "always"],
     "no-else-return": 2
   },
   "extends": "eslint:recommended",

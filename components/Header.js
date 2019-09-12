@@ -1,13 +1,14 @@
 import { Component } from 'react';
+import { Layout, Menu } from 'antd';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
-import getConfig from 'next/config';
-import { color_primary } from '../constants/CustomTheme';
+// import getConfig from 'next/config';
+
+const { Header } = Layout;
 
 // Only holds serverRuntimeConfig and publicRuntimeConfig from next.config.js nothing else.
-const { publicRuntimeConfig: { staticFolder } } = getConfig();
+// const { publicRuntimeConfig: { staticFolder } } = getConfig();
 
-class Header extends Component {
+class HeaderApp extends Component {
   static propTypes = {
     title: PropTypes.string
   }
@@ -30,56 +31,23 @@ class Header extends Component {
   }
 
   render() {
-    const { title } = this.state;
+    // const { title } = this.state;
     return (
-      <div id='header_bar' className='container'>
-        <style jsx>{`
-          .container {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 60px;
-            background-color: ${color_primary};
-            z-index: 999;
-          }
-          h1 {
-            text-align: center;
-            line-height: 60px;
-            font-size: 1.6rem;
-            font-weight: 500;
-            color: #fff;
-          }
-          .logo-container {
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            top: 15px;
-            left: 20px;
-            cursor: pointer;
-          }
-          .sys-name {
-            display: inline-block;
-            margin-left: 10px;
-            font-size: 20px;
-            color: #fff;
-            font-weight: 600;
-          }
-          .logo {
-            width: 30px;
-            height: 30px;
-          }
-        `}</style>
-        <Link href='/'>
-          <div className='logo-container'>
-            <img className='logo' alt='logo' src={`${staticFolder}/logo.png`} />
-            <span className='sys-name'>Next-Antd-Scaffold</span>
-          </div>
-        </Link>
-        <h1>{title}</h1>
-      </div>
+      <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+        <div className='logo' />
+        <Menu
+          theme='dark'
+          mode='horizontal'
+          defaultSelectedKeys={['2']}
+          style={{ lineHeight: '64px' }}
+        >
+          <Menu.Item key='1'>nav 1</Menu.Item>
+          <Menu.Item key='2'>nav 2</Menu.Item>
+          <Menu.Item key='3'>nav 3</Menu.Item>
+        </Menu>
+      </Header>
     );
   }
 }
 
-export default Header;
+export default HeaderApp;

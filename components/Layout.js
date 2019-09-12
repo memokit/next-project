@@ -1,44 +1,31 @@
 import PropTypes from 'prop-types';
-import DynamicAntdTheme from 'dynamic-antd-theme';
+import { Layout, Breadcrumb } from 'antd';
+// import DynamicAntdTheme from 'dynamic-antd-theme';
+const { Content, Footer } = Layout;
 import Header from './Header';
 
-const Layout = ({ title, children }) => (
-  <>
-    <style jsx>{`
-      .content-container {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 70px 20px 20px 20px;
-        padding: 10px 20px;
-        background-color: #fff;
-      }
-    `}</style>
-    <Header title={title} />
-    <div className='content-container'>
-      {children}
-    </div>
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      Change Theme:
-      <DynamicAntdTheme
-        style={{ display: 'flex', marginLeft: '10px' }}
-        primaryColor='#52c41a'
-        themeChangeCallback={
-          color => document.getElementById('header_bar').style.backgroundColor = color
-        }
-      />
-    </div>
-  </>
+const LayoutApp = ({ title, children }) => (
+    <Layout>
+        <Header title={title} />
+        <Content style={{ padding: '0 50px', marginTop: 64 }}>
+            <Breadcrumb style={{ margin: '16px 0' }}>
+                <Breadcrumb.Item>Home</Breadcrumb.Item>
+                <Breadcrumb.Item>List</Breadcrumb.Item>
+                <Breadcrumb.Item>App</Breadcrumb.Item>
+            </Breadcrumb>
+            <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>{children}</div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+    </Layout>
 );
-export default Layout;
+export default LayoutApp;
 
-Layout.propTypes = {
-  title: PropTypes.string,
-  children: PropTypes.any
+LayoutApp.propTypes = {
+    title: PropTypes.string,
+    children: PropTypes.any
 };
 
-Layout.defaultProps = {
-  title: '',
-  children: null
+LayoutApp.defaultProps = {
+    title: '',
+    children: null
 };
