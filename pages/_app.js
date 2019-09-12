@@ -1,9 +1,9 @@
 import App from 'next/app';
 import Head from 'next/head';
-// import { Provider } from 'react-redux';
-// import withRedux from 'next-redux-wrapper';
-// import withReduxSaga from 'next-redux-saga';
-// import createStore from '../redux/store';
+import { Provider } from 'react-redux';
+import withRedux from 'next-redux-wrapper';
+import withReduxSaga from 'next-redux-saga';
+import createStore from '../redux/store';
 import Layout from '../components/Layout';
 import { RouterTitle } from '../constants/ConstTypes';
 import '../assets/self-styles.less';
@@ -22,7 +22,7 @@ class NextApp extends App {
   }
 
   render () {
-    const { Component, pageProps, router } = this.props;
+    const { Component, pageProps, store, router } = this.props;
     return (
       <>
         <Head>
@@ -41,15 +41,14 @@ class NextApp extends App {
           `}
           </style>
         </Head>
-        {/* <Provider store={store}> */}
+        <Provider store={store}>
           <Layout title={RouterTitle[router.pathname]}>
             <Component {...pageProps} router={router} />
           </Layout>
-        {/* </Provider> */}
+        </Provider>
       </>
     );
   }
 }
 
-export default NextApp;
-// export default withRedux(createStore)(withReduxSaga({ async: true })(NextApp));
+export default withRedux(createStore)(withReduxSaga({ async: true })(NextApp));

@@ -5,6 +5,5 @@ export const RoleType = {
 
 export const RouterTitle = {
   '/': 'Home',
-  '/blog': 'Blog',
-  '/user/detail': 'UserDetail'
+  '/blog': 'Blog'
 };

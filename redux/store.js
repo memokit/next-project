@@ -2,13 +2,14 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from './reducers/index';
 import rootSaga from './sagas/index';
-import homeMiddleware from '../middlewares/client/home';
+import blogMiddleware from '../middlewares/client/blog';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const bindMiddleware = (middleware) => {
   // add route middleware
-  middleware.push(homeMiddleware);
+  middleware.push(blogMiddleware);
+
   if (process.env.NODE_ENV !== 'production') {
     const { composeWithDevTools } = require('redux-devtools-extension');
     // development use logger
