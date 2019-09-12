@@ -1,6 +1,7 @@
 import { Component } from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Affix } from 'antd';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 // import getConfig from 'next/config';
 
 const { Header } = Layout;
@@ -31,21 +32,40 @@ class HeaderApp extends Component {
   }
 
   render() {
-    // const { title } = this.state;
+    const { title } = this.state;
+
+    console.log(title);
+
     return (
-      <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-        <div className='logo' />
-        <Menu
-          theme='dark'
-          mode='horizontal'
-          defaultSelectedKeys={['2']}
-          style={{ lineHeight: '64px' }}
-        >
-          <Menu.Item key='1'>nav 1</Menu.Item>
-          <Menu.Item key='2'>nav 2</Menu.Item>
-          <Menu.Item key='3'>nav 3</Menu.Item>
-        </Menu>
-      </Header>
+      <>
+        <Header style={{ color: '#fff' }}>
+          Main Head
+        </Header>
+        <Affix >
+          <Header>
+            <div className="logo" />
+            <Menu
+              theme="dark"
+              mode="horizontal"
+              defaultSelectedKeys={[title]}
+              style={{ lineHeight: '64px' }}
+            >
+
+              <Menu.Item key="Home">
+                <Link href='/'>
+                  <a>Home</a>
+                </Link>
+              </Menu.Item>
+
+              <Menu.Item key="Blog">
+                <Link href='/blog'>
+                  <a>Blog</a>
+                </Link>
+              </Menu.Item>
+            </Menu>
+          </Header>
+        </Affix>
+      </>
     );
   }
 }

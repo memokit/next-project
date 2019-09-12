@@ -110,7 +110,7 @@ module.exports = withLess({
   },
   serverRuntimeConfig: { // Will only be available on the server side
     rootDir: path.join(__dirname, './'),
-    PORT: isDev ? 3000 : (process.env.PORT || 5000)
+    PORT: isDev ? 3001 : (process.env.PORT || 5000)
   },
   publicRuntimeConfig: { // Will be available on both server and client
     staticFolder: '/static',
