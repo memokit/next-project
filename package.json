@@ -14,7 +14,7 @@
     "babel-plugin-import": "^1.12.1",
     "dynamic-antd-theme": "^0.3.3",
     "es6-promise": "^4.2.8",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "if-comp": "^0.1.2",
     "isomorphic-unfetch": "^3.0.0",
     "less": "^3.10.3",
